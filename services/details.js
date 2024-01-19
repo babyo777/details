@@ -11,7 +11,7 @@ const getDetails = async (username) => {
     if(querySnapshot.empty) throw new Error("user not found")
     const userDoc = querySnapshot.docs[0];
     const stories = await getDocs(query(storiesRef,where("user_id","==",userDoc.id)))
-    const storiesData = stories.docs.map(stories=>({id:stories.id,link:stories.get("link")}))
+    const storiesData = stories.docs.map(stories=>({id:stories.id,link:stories.get("link"),date:stories.get("date")}))
     const userData = { id: userDoc.id, ...userDoc.data() , story: storiesData };
     return userData;
   } catch (err) {
