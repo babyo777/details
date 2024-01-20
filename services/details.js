@@ -2,7 +2,7 @@ import { db } from "../Utils/firebase-config.js";
 import { collection, getDocs, query, where } from "firebase/firestore";
 
 const detailsRef = collection(db, "details");
-const storiesRef = collection(db, "stories");
+const projectRef = collection(db, "projects");
 
 const getDetails = async (username) => {
   try {
@@ -10,13 +10,13 @@ const getDetails = async (username) => {
     const querySnapshot = await getDocs(queryString);
     if(querySnapshot.empty) throw new Error("user not found")
     const userDoc = querySnapshot.docs[0];
-    const stories = await getDocs(query(storiesRef,where("user_id","==",userDoc.id)))
-    const storiesData = stories.docs.map(stories=>({id:stories.id,link:stories.get("link"),date:stories.get("date")}))
-    const userData = { id: userDoc.id, ...userDoc.data() , story: storiesData };
+  const Projects = await getDocs(query(projectRef, where("user_id", "==", userDoc.id)))
+ const ProjectsData = Projects.docs.map(doc=>doc.data())
+    const userData = { id: userDoc.id, ...userDoc.data() ,projects:ProjectsData  };
     return userData;
   } catch (err) {
     console.log(err.message);
   }
 };
 
-export { storiesRef, detailsRef, getDetails };
+export { projectRef, detailsRef, getDetails };

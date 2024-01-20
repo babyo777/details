@@ -1,17 +1,20 @@
 import { addDoc } from "firebase/firestore";
-import { storiesRef,getDetails } from "./details.js";
+import { projectRef,getDetails } from "./details.js";
 
-const addStory=async(username,link)=>{
+const addProject=async(username,title,link,desc,tech)=>{
     if(!link) return
     try {
         const user = await getDetails(username)
        
         const story = {
             user_id:user.id,
-            link:link
+            title:title,
+            link:link,
+            desc:desc,
+            tech:tech
         }
         
-       await addDoc(storiesRef,story)
+       await addDoc(projectRef,story)
        return
     } catch (error) {
         console.log(error.message);
@@ -19,6 +22,6 @@ const addStory=async(username,link)=>{
   
 }
 
-addStory("babyo7_")
+addProject("babyo7_")
 
-export{addStory}
+export{addProject}
