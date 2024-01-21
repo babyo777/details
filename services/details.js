@@ -2,7 +2,7 @@ import { db } from "../Utils/firebase-config.js";
 import { collection, getDocs, query, where } from "firebase/firestore";
 
 const detailsRef = collection(db, "details");
-const projectRef = collection(db, "prjects");
+const projectRef = collection(db, "projects");
 
 const getDetails = async (username,res) => {
   try {
