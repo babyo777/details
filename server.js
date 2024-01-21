@@ -5,6 +5,7 @@ const app = express()
 const PORT = process.env.PORT ?? 3000
 
 app.use(cors())
+app.use(express.urlencoded({extended:true}))
 app.use(Router)
 app.use((req,res)=>{
     res.json("Page not Found")

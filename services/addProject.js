@@ -1,4 +1,4 @@
-import { addDoc } from "firebase/firestore";
+import { addDoc,serverTimestamp } from "firebase/firestore";
 import { projectRef,getDetails } from "./details.js";
 
 const addProject=async(username,title,link,desc,tech)=>{
@@ -11,7 +11,8 @@ const addProject=async(username,title,link,desc,tech)=>{
             title:title,
             link:link,
             desc:desc,
-            tech:tech
+            tech:tech,
+            date:serverTimestamp()
         }
         
        await addDoc(projectRef,story)
