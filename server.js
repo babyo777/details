@@ -4,7 +4,9 @@ import cors from "cors";
 const app = express()
 const PORT = process.env.PORT ?? 3000
 
-app.use(cors())
+app.use(cors({
+    origin: ["https://tanmay-seven.vercel.app/","https://tanmayo7.vercel.app/"]
+}))
 app.use(express.json())
 app.use(Router)
 app.use((req,res)=>{
