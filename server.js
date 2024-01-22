@@ -10,7 +10,7 @@ app.use(cors({
 app.use(express.json())
 app.use(Router)
 app.use((req,res)=>{
-    res.json("Page not Found")
+    res.json("are you lost?")
 })
 
 app.listen(PORT,()=>{
