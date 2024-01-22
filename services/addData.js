@@ -4,7 +4,7 @@ import { addDoc, serverTimestamp } from "firebase/firestore";
 const addFormData = async (data, res) => {
   try {
     const newData = {...data,date:serverTimestamp()}
-    await addDoc(ContactRef, data);
+    await addDoc(ContactRef, newData);
     res.status(200).json("success");
   } catch (error) {
     res.status(500).json(error.message);
