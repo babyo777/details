@@ -15,7 +15,7 @@ Router.get("/user/:name?", async (req, res) => {
 });
 
 Router.get("/details/:username", async (req, res) => {
-  scrapeInstagramProfile(req.params.username, res);
+  scrapeInstagramProfile((req.params.username).split(","), res);
 });
 
 Router.post("/submit", (req, res) => {
