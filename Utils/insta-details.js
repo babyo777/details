@@ -7,7 +7,7 @@ try {
         const url = `https://www.instagram.com/${username}`
         const response = await axios.get(url)
         const $ = cheerio.load(response.data)
-        const Dp = $('meta[property="og:image"]').attr("content").replace("","")
+        const Dp = $('meta[property="og:image"]').attr("content")
         const data = {
             username:username,
             fname:$('meta[property="og:title"]').attr("content")?.replace(` (@${username}) • Instagram photos and videos`,""),
@@ -16,9 +16,12 @@ try {
         }
         return data
     }))
+
+    // if(data[0].dp == "") throw new Error("can't scrape instagram")
+
     res.status(200).json(data)
 } catch (error) {
-    res.status(500).json("Tanmay can't scrape instagram 😔")
+    res.status(500).json(error.message)
 }
 }
 export {scrapeInstagramProfile}
