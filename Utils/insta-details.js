@@ -9,8 +9,8 @@ try {
         const $ = cheerio.load(response.data)
         const data = {
             username:username,
-            fname:$('meta[property="og:title"]').attr("content").replace(` (@${username}) • Instagram photos and videos`,""),
-            dp:$('meta[property="og:image"]').attr("content"),
+            fname:$('meta[property="og:title"]').attr("content")?.replace(` (@${username}) • Instagram photos and videos`,""),
+            dp:$('meta[property="og:image"]')?.attr("content"),
             url:url
         }
         return data
