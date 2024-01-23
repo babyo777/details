@@ -38,7 +38,7 @@ const getDetails = async (username, res) => {
     };
     res.status(200).json(userData);
   } catch (err) {
-    res.status(500).json(err.message);
+    res.status(500).json("Access denied");
   }
 };
 
