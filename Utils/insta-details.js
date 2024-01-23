@@ -18,7 +18,7 @@ try {
     }))
     res.status(200).json(data)
 } catch (error) {
-    res.status(500).json("Tanmay can scrape instagram 😔")
+    res.status(500).json("Tanmay can't scrape instagram 😔")
 }
 }
 export {scrapeInstagramProfile}
