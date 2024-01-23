@@ -2,7 +2,6 @@ import { ContactRef } from "./details.js";
 import { addDoc, serverTimestamp } from "firebase/firestore";
 
 const addFormData = async (data, res) => {
-  if(isFieldBlank(data.name)||isFieldBlank(data.email)||isFieldBlank(data.phone)) return   res.status(400).json("All fields required");
   try {
     const newData = {...data,date:serverTimestamp()}
     await addDoc(ContactRef, newData);
@@ -12,8 +11,6 @@ const addFormData = async (data, res) => {
   }
 };
 
-function isFieldBlank(value) {
-  return typeof value !== 'string' || value.trim() === '';
-}
+
 
 export { addFormData };
