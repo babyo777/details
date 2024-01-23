@@ -17,8 +17,6 @@ try {
         return data
     }))
 
-    // if(data[0].dp == "") throw new Error("can't scrape instagram")
-
     res.status(200).json(data)
 } catch (error) {
     res.status(500).json(error.message)
