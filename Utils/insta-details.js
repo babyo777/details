@@ -7,10 +7,12 @@ try {
         const url = `https://www.instagram.com/${username}`
         const response = await axios.get(url)
         const $ = cheerio.load(response.data)
+        const Dp = $('meta[property="og:image"]').attr("content")
+        if(!Dp) throw new Error("tanmay can't scaping instagram 😔")
         const data = {
             username:username,
             fname:$('meta[property="og:title"]').attr("content")?.replace(` (@${username}) • Instagram photos and videos`,""),
-            dp:$('meta[property="og:image"]').attr("content"),
+            dp:Dp,
             url:url
         }
         return data
