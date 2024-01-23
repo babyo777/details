@@ -15,7 +15,7 @@ try {
         }
         return data
     }))
-
+    if(Object.keys(data).length == 0) throw new Error("scraping error")
     res.status(200).json(data)
 } catch (error) {
     res.status(500).json(error.message)
