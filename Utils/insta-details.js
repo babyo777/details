@@ -10,12 +10,13 @@ try {
         const data = {
             username:username,
             fname:$('meta[property="og:title"]').attr("content")?.replace(` (@${username}) • Instagram photos and videos`,""),
-            dp:$('meta[property="og:image"]')?.attr("content"),
+            dp:$('meta[property="og:image"]').attr("content"),
             url:url
         }
         return data
     }))
-    if(Object.keys(data).length == 0) throw new Error("scraping error")
+    if(!data[0].dp) throw new Error("can't scrape instagram")
+
     res.status(200).json(data)
 } catch (error) {
     res.status(500).json(error.message)
