@@ -8,7 +8,7 @@ const addFormData = async (data, res) => {
     if (Object.keys(data).length == 0) return res.status(402).json("Fields is empty");
     const {token,...rest} =data
     const newData = { ...rest, date:admin.firestore.FieldValue.serverTimestamp() };
-    ContactRef.add(newData)
+    await ContactRef.add(newData)
     res.status(200).json("success");
   } catch (error) {
     if (error.code === "auth/argument-error") {
