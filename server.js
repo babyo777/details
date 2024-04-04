@@ -5,7 +5,7 @@ const app = express()
 const PORT = process.env.PORT ?? 3000
 
 app.use(cors({
-    origin: ["https://tanmay-seven.vercel.app","https://tanmayo7.vercel.app","http://localhost:5173","http://172.20.10.2:5173","https://tanmayo7-old.vercel.app/"]
+    origin: ["https://tanmay-seven.vercel.app","https://tanmayo7.vercel.app","http://localhost:5173","http://172.20.10.2:5173","https://tanmayo7-old.vercel.app"]
 }))
 app.use(express.json())
 app.use(Router)
